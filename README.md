@@ -1,0 +1,2 @@
+# TastyReceipesMVC
+MVC pattern

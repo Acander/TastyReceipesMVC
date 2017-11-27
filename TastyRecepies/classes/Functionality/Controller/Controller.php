@@ -10,13 +10,13 @@
 	*/
 
 	class Controller {
-		private const CONTR_KEY = StartUp::CONST_PREFIX , 'controller';
-		private commentDOA;
-		private userDOA;
+		const CONTR_KEY = StartUp::CONST_PREFIX,'controller';
+		private $commentDOA;
+		private $userDOA;
 		
 		public function _construct(){
-			$this->commentDOA = new CommentDOA();
-			$this->userDOA = new UserDOA();
+			$this->$commentDOA = new CommentDOA();
+			$this->$userDOA = new UserDOA();
 		}
 		
 		public static function getController(){

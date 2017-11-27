@@ -3,18 +3,18 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Meatballs</title>
-		<link rel="stylesheet" type="text/css" href="BasicLayout.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/BasicLayout.css"/>
 	</head>
 	
 	<body class = "bg">
 		<?php
-			include("head.php");
+			include("../fragments/head.php");
 		?>
 		
 		<div class = "center">
 		
 			<h1 class = "headline2">Meatballs</h1>
-			<img class = "stdImage" src = "/TastyRecepies/resources/images/spagetti.jpg" alt = "Image of sime meatballs"/>
+			<img class = "stdImage" src = "../images/spagetti.jpg" alt = "Image of sime meatballs"/>
 		
 		
 		<div class = "recipeCenter">

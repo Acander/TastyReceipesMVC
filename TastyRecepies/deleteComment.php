@@ -1,5 +1,4 @@
 <?php
-	include("dbLoginConfig.php");
 	require './resources/fragments/init.php';
 	
 	use Functionality\Controller\Controller;

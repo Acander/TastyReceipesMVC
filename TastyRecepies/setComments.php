@@ -1,5 +1,4 @@
 <?php 
-	include("dbLogInConfig.php");
 	require './resources/fragments/init.php';
 	
 		if(!isset($_POST['submit'])){

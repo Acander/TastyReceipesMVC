@@ -1,6 +1,7 @@
 <?php 
-	include("dbLogInConfig.php");
 	date_default_timezone_set('Europe/Stockholm');
+	
+	require '../../classes/Functionality/Controller/Controller.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +9,7 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Comment</title>
-		<link rel="stylesheet" type="text/css" href="BasicLayout.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/BasicLayout.css"/>
 	</head>
 	
 	<body>
@@ -16,7 +17,7 @@
 		<?php
 		
 		function setComments($food){
-			echo "<form method = 'POST' action= '/TastyRecepies/setComments.php' id='commentform'>
+			echo "<form method = 'POST' action= '../../setComments.php' id='commentform'>
 				<input type = 'hidden' name = 'uid' value = '".$_SESSION['e']."'>
 				<input type = 'hidden' name = 'date' value = '".date('Y-m-d H:i:s')."'>
 				<input type = 'hidden' name = 'food' value = '$food'>

@@ -6,6 +6,7 @@
 	*/
 	
 	class StartUp{
+		const CONST_PREFIX = 'FUNCTIONALITY_';
 		
 		public static function initRequest(){
 			session_start();

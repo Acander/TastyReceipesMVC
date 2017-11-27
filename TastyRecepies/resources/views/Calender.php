@@ -3,12 +3,12 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Calendar</title>
-		<link rel="stylesheet" type="text/css" href="BasicLayout.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/BasicLayout.css"/>
 	</head>
 	
 	<body class = "bg">
 		<?php
-			include("head.php");
+			include("../fragments/head.php");
 		?>
 		
 		<div class = "calendar">
@@ -37,7 +37,7 @@
 				<li>4</li>
 				<li>5</li>
 				<li>6</li>
-				<li><div>7</div><div><a href = "Pancakes.php"><img class = "stdImageCal" src = "/TastyRecepies/resources/images/Pan.jpg" alt = "Picture of some Pancakes"/></a></div></li>
+				<li><div>7</div><div><a href = "Pancakes.php"><img class = "stdImageCal" src = "../images/Pan.jpg" alt = "Picture of some Pancakes"/></a></div></li>
 				<li>8</li>
 				<li>9</li>
 				<li>10</li>
@@ -47,7 +47,7 @@
 				<li>14</li>
 				<li>15</li>
 				<li>16</li>
-				<li><div>17</div><div><a href = "Meatballs.php"><img class = "stdImageCal" src = "/TastyRecepies/resources/images/spagetti.jpg" alt = "Picture of some Meatballs"/></a></div></li>
+				<li><div>17</div><div><a href = "Meatballs.php"><img class = "stdImageCal" src = "../images/spagetti.jpg" alt = "Picture of some Meatballs"/></a></div></li>
 				<li>18</li>
 				<li>19</li>
 				<li>20</li>

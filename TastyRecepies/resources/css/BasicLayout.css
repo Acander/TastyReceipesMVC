@@ -1,0 +1,602 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+
+blockquote, q {
+	quotes: "" "";
+}
+
+p {
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+body {
+	display: block;
+	margin: 1%;
+}
+
+h1{
+	display: block;
+	font-size: 2em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+}
+
+img{
+		display: inline-block;
+}
+
+div{
+		display: block;
+}
+
+ul{
+	display: block;
+	list-style-type: disc;
+	margin-top: 0em;
+	margin-bottom: 1em;
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 40px;
+	margin: 2%;
+}
+
+.bg{
+	text-align: center;
+	
+	background-image: url("food.jpg");
+	
+	height: 100%;
+	
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/*Only used for headline at the top of every site*/
+
+.headline1{
+	text-align: center;
+	color: rgb(200, 0, 0);
+	font-family: Fantasy;
+	font-size: 200%;
+}
+
+/*Secondary headline for subsites*/
+
+.headline2{
+	font-family: Fantasy;
+	font-size: 180%;
+}
+
+/*To describe a recipe or an image*/
+
+.headline3{
+	font-family: cursive;
+	font-size: 120%;
+}
+
+/*For logIn page*/
+
+.headline4{
+	font-family: cursive;
+	font-size: 100%;
+	margin-bottom: 0.5%;
+	margin-top: 0.5%;
+}
+
+ul.navigationBar {
+	list-style-type: none;
+	margin-left: 25%;
+	padding: 0;
+	width: 50%;
+	overflow: hidden;
+	background-color: rgb(200, 0, 0);
+}
+
+li.navigation{
+	float: left;
+	width: 25%;
+	
+}
+
+li.navigation a{
+	display: block;
+	color: black;
+	text-align: center;
+	font-family: Fantasy;
+	padding: 8% 10%;
+	text-decoration: none;
+}
+
+li.navigation a:hover{
+	background-color: rgb(150, 0, 0);
+}
+
+.text {
+	font-family: cursive;
+}
+
+img.stdImage {
+	width: 60%;
+	height: auto;
+	margin: auto;
+}
+
+img.stdImageCal {
+	width: 70%;
+	height: auto;
+	margin-left: 15%;
+	margin-top: 0;
+	border: 1px solid rgb(150, 0, 0);
+	position: absolute;
+}
+
+div.center{
+	background-color: white;
+	margin: auto;
+	width: 60%;
+	border: 3px solid rgb(200, 0, 0);
+	
+}
+
+div.recipeCenter{
+	background-color: red;
+	padding: 0.5%;
+	margin: auto;
+	font-family: cursive;
+	font-size: 80%;
+}
+
+div.instructions {
+	text-align: left;
+	padding: 0.15%;
+	margin: auto;
+	width: 60%;
+	border: 3px solid rgb(200, 0, 0);
+	font-family: cursive;
+	font-size: 80%;
+}
+
+.instructions ul li {
+	list-style-type: square;
+}
+
+div.calendar {
+	margin: auto;
+	width: 70%;
+	height: 80%;
+}
+
+p.comment {
+	font-family: cursive;
+	font-size: 80%;
+}
+
+/*Calendar CSS*/
+
+.month{
+	padding: 70px 0px;
+	width: 100%;
+	background-color: rgb(150, 0, 0);
+	text-align: center;
+}
+
+.month ul{
+	list-style-type: none;
+	margin: auto;
+	padding: 3%;
+	Border: 2px solid black;
+	width: 30%;
+	text-align: center;
+}
+
+.month ul li{
+	color: black;
+	font-size: 150%;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-family: Fantasy;
+}
+
+/*Weekdays*/
+
+.weekdays {
+	margin: 0;
+	padding: 1% 0%;
+	background-color: rgb(200, 0, 0);
+	list-style-type: none;
+}
+
+.weekdays li{
+	display: inline-block;
+	width: 13.6%;
+	color: black;
+	text-align: left;
+	font-family: cursive;
+	font-weight: bold;
+	font-size: 100%;
+}
+
+/*Days (1-31)*/
+.days{
+	padding: 10px 0;
+	background: white;
+	margin: 0;
+	text-align: left;
+	height: auto;
+	border: 3px solid rgb(150, 0, 0);
+}
+
+.days li{
+	border: 1px solid black;
+	list-style-type: none;
+	display: inline-block;
+	width:9vw;
+	height: 7vw;
+	text-align: left;
+	margin-bottom: 5px;
+	font-size: 100%;
+	font-family: cursive;
+	color: black;
+	position: relative;
+}
+
+.textArea{
+	width: 70%;
+	height: auto;
+	font-size: 100%;
+}
+
+/*logIn style*/
+
+/* Bordered form */
+form {
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+	color: white;
+    padding: 2% 4%;
+    margin: 1% 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+.logInButton {
+	background-color: rgb(0, 150, 0);
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtnLogIn {
+    width: auto;
+    padding: 1.5% 2%;
+    background-color: rgb(200, 0, 0);
+	text-decoration: none;
+	color: white;
+}
+
+.cancelbtnLogIn:hover{
+	opacity: 0.8;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 2% 0% 1% 0&;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container {
+	text-align: center;
+    padding: 1.8%;
+}
+
+.lastContainer {
+	margin-top: 2%;
+	text-align: center;
+	padding-bottom: 4%;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtnUserRegi {
+	text-decoration: none;
+	color: white;
+    padding: 1.5% 2%;
+    background-color: rgb(200, 0, 0);
+	width: 96%;
+}
+
+.signupbtn {
+	padding: 1.5% 2%;
+    background-color: rgb(0, 150, 0);
+	width: 100%;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtnUserRegi,.signupbtn {
+    float: left;
+}
+
+.cancelbtnUserRegi:hover {
+	opacity: 0.8;
+}
+
+.buttonContainer::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.logIn{
+	display: block;
+	color: black;
+	background-color: rgb(0, 180, 0);
+	text-decoration: none;
+	padding-bottom: 5%;
+	padding-top: 5%;
+	width: 100%;
+	text-align: center;
+	font-family: cursive;
+}
+
+a.logIn:hover{
+	background-color: rgb(0, 150, 0);
+}
+
+.errorMessage {
+	color: rgb(200, 0, 0);
+}
+
+.subline {
+	width: 10%;
+	margin-left: 45%;
+	border: 3px solid black;
+}
+
+#commentform {
+	border: none;
+	margin: 2%;
+}
+
+.logOutButtonForm{
+	border: none;
+}
+
+.logOutButton{
+	background-color: rgb(150, 0, 0);
+	padding-bottom: 5%;
+	padding-top: 5%;
+	margin: auto;
+	font-family: cursive;
+}
+
+.logOutButton:hover{
+	background-color: rgb(100, 0, 0);
+	opacity: 1;
+}
+
+.commentDiv{
+	border-top: 1px solid black;
+	background-color: rgb(0, 200, 0);
+}
+
+.message{
+	margin-top: 2%;
+	font-family: cursive;
+	font: bold;
+	font-size: 90%;
+}
+
+.comment-boxes{
+	background-color: rgb(0, 200, 0);
+	border-top: 1px solid black;
+	padding-top: 2%;
+}
+
+.delete-form{
+	text-align: center;
+	border: none;
+	width: 20%;
+	margin-left: 80%;
+}
+
+.commentDeleteButton{
+	margin: auto;
+	background-color: rgb(0, 150, 0);
+	color: black;
+	font-family: cursive;
+}
+
+/*Terms and Privacy*/
+
+.terms {
+	display: block;
+	background-color: rgb(200, 0, 0);
+	width: 20%;
+	margin: auto;
+	margin-bottom: 2%;
+	border: 2px solid black;
+	text-decoration: none;
+	font-family: cursive;
+	font-size: 100%;
+	color: black;
+	padding: 1% 2%;
+}
+
+.terms:hover{
+	background-color: rgb(150, 0, 0);
+}
+
+@media screen and (max-width: 730px) {
+    .terms {
+        font-size: 70%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .terms {
+        font-size: 50%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .terms {
+        font-size: 40%;
+    }
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+        width: 100%;
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+	li.navigation a {font-size: 70%;}
+	.weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 900px){
+	li.navigation a {font-size: 50%}
+	.weekdays li, .days li {width: 12.5%;}
+}
+
+@media screen and (max-width: 550px){
+	li.navigation a {font-size: 28%}
+}
+
+@media screen and (max-width: 800px) {
+    .weekdays li, .days li {width: 12%;}
+}
+
+@media screen and (max-width: 700px) {
+    .weekdays li, .days li {width: 11.5%;}
+	
+	p.comment{font-size: 50%;}
+	
+	.recipeCenter{font-size: 50%;}
+	
+	.instructions ul li {font-size: 50%;}
+	
+	.headline1{font-size: 120%;}
+	.headline2{font-size: 100%;}
+	.headline3{font-size: 80%;}
+	.headline4{font-size: 60%;}
+	
+	.textArea{font-size: 70%;}
+}
+
+@media screen and (max-width: 500px) {
+    .month{
+		font-size: 70%;
+	}
+	
+	.weekdays li, .days li {width: 11%; font-size: 50%; }
+}
+
+@media screen and (max-width: 400px){
+	.weekdays li, .days li {width: 10.5%; font-size: 50%; }
+	
+	.instructions ul li {font-size: 40%;}
+	
+	.textArea{font-size: 50%;}
+	}
+
+
+
+

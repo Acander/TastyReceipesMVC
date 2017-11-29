@@ -1,5 +1,5 @@
 <?php
-	require './resources/fragments/init.php';
+	require 'resources/fragments/init.php';
 	
 	use Functionality\Controller\Controller;
 
@@ -13,6 +13,6 @@
 		$contr = Controller::getController();
 		$contr->deleteComment($c_id, $food);
 		
-		header("Location: ../TastyRecepies/$food.php");
+		header("Location: ../TastyRecepies/resources/views/$food.php");
 		exit();
 ?>

@@ -2,21 +2,21 @@
 	namespace Functionality\Controller;
 	
 	use Functionality\Util\StartUp;
-	use Functionality\Integration\CommentDOA;
-	use Functionality\Integration\UserDOA;
+	use Functionality\Integration\CommentDAO;
+	use Functionality\Integration\UserDAO;
 	
 	/**
 	* This is the controller object. All calls to the bottom layers from the view goes through here.
 	*/
 
 	class Controller {
-		const CONTR_KEY = StartUp::CONST_PREFIX,'controller';
-		private $commentDOA;
-		private $userDOA;
+		const CONTR_KEY = StartUp::CONST_PREFIX.'controller';
+		private $commentDAO;
+		private $userDAO;
 		
-		public function _construct(){
-			$this->$commentDOA = new CommentDOA();
-			$this->$userDOA = new UserDOA();
+		public function __construct(){
+			$this->commentDAO = new CommentDAO();
+			$this->userDAO = new UserDAO();
 		}
 		
 		public static function getController(){
@@ -24,6 +24,7 @@
 				return new Controller();
 			}
 			return unserialize($_SESSION[self::CONTR_KEY]);
+			
 		}
 		
 		/**
@@ -31,8 +32,8 @@
 		*	@param string The comments id 
 		*	@param string The page were a comment should be deleted
 		*/
-		public function deleteComment(string $c_id, string $food){
-			commentDOA->delComment($c_id, $food);
+		public function deleteComment($c_id, $food){
+			$this->commentDAO->delComment($c_id, $food);
 		}
 		
 		/**
@@ -43,7 +44,7 @@
 		*	@param string Which page the comment was added
 		*/
 		public function addANewComment($uid, $message, $date, $food){
-			commentDoa->addComment($uid, $message, $date, $food);
+			$this->commentDAO->addComment($uid, $message, $date, $food);
 		}
 		
 		/**
@@ -51,7 +52,7 @@
 		*	@returns mysqli_result 
 		*/
 		public function getComments(){
-			return commentDOA->getAllComments();
+			return $this->commentDAO->getAllComments();
 		}
 		
 		/**
@@ -61,7 +62,7 @@
 		*	@param string An unescaped re-submited password (supposed to be the same as the above) from the user input
 		*/
 		public function userRegistration($unescapedEmail, $unescapedPwd, $unescapedpwdRe){
-			userDOA->registrateUser($unescapedEmail, $unescapedPwd, $unescapedpwdRe);
+			$this->userDAO->registrateUser($unescapedEmail, $unescapedPwd, $unescapedpwdRe);
 		}
 		
 		/**
@@ -70,20 +71,20 @@
 		*	@param string An unescaped password
 		*/
 		public function conValUser($unescapedEmail, $unescapedPwd){
-			userDOA->validateUser($unescapedEmail, $unescapedPwd);
+			$this->userDAO->validateUser($unescapedEmail, $unescapedPwd);
 		}
 		
 		/**
 		*	Logs out the user
 		*/
 		public function userLogOut(){
-			userDOA->sessionEnd();
+			$this->userDAO->sessionEnd();
 		}
 		
 		/**
 		*Destroys the controller
 		*/
-		public function _destruct() {
+		public function __destruct() {
 			$_SESSION[self::CONTR_KEY] = serialize($this);
 		}
 		

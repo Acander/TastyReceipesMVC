@@ -4,7 +4,9 @@
 	*	This code validates users email- and password input
 	*/
 	
-	require './resources/fragments/init.php';
+	require 'resources/fragments/init.php';
+	
+	use Functionality\Controller\Controller;
 	
 	if(!isset($_POST["submit"])){
 		return;

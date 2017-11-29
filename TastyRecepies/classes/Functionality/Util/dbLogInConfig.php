@@ -4,18 +4,18 @@
 
 	class DbLogInConfig{
 			
-		private $dbServerName = "localhost";
-		private $dbUsername = "root";
-		private $dbPassword = "";
-		private $dbName = "tastydatabase";
+		const dbServerName = "localhost";
+		const dbUsername = "root";
+		const dbPassword = "";
+		const dbName = "tastydatabase";
 			
 		/**
 		*	Establishes a connection with the database
 		*	@return connection object returns an object representing a connection to the database
 		*/
-		public static function establishDatabaseConnection{
+		public static function establishDatabaseConnection(){
 			self::initializeErrorReporting();
-			return mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+			return mysqli_connect(self::dbServerName, self::dbUsername, self::dbPassword, self::dbName);
 		}
 			
 		private static function initializeErrorReporting(){

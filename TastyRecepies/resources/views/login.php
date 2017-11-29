@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +17,7 @@
 	<?php
 		if(isset($_SESSION['e'])){
 			echo "<div class = 'subline'>
-				<form action = '../../logout.php' method = 'POST' class = 'logOutButtonForm'>
+				<form action = 'logout.php' method = 'POST' class = 'logOutButtonForm'>
 					<button type = 'submit' name = 'submit' class = 'logOutButton'>Log Out</button>
 				</form>
 			</div>";

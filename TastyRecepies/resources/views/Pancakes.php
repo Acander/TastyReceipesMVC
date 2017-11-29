@@ -42,7 +42,7 @@
 			<h1 class = "headline3">Comments</h1>
 			
 			<?php
-				include("Comment.php");
+				include("../fragments/Comment.php");
 				
 				getComments("Pancakes");
 				

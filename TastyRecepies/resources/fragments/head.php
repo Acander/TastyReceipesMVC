@@ -1,3 +1,7 @@
+<?php
+	require 'initViews.php';
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>

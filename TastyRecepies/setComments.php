@@ -1,5 +1,7 @@
 <?php 
-	require './resources/fragments/init.php';
+	require 'resources/fragments/init.php';
+	
+	use Functionality\Controller\Controller;
 	
 		if(!isset($_POST['submit'])){
 			return;
@@ -11,9 +13,9 @@
 		$food = $_POST['food'];
 		
 		$contr = Controller::getController();
-		$contr->addANewComment($uid, $date, $message, $food);
+		$contr->addANewComment($uid, $message, $date, $food);
 		
-		header("Location: ../TastyRecepies/$food.php");
+		header("Location: ../TastyRecepies/resources/views/$food.php");
 		exit();
 		
 		

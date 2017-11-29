@@ -7,6 +7,7 @@
 	
 	class StartUp{
 		const CONST_PREFIX = 'FUNCTIONALITY_';
+		const WEBAPPROOT = 'C:/wamp64/www/TastyRecepies/';
 		
 		public static function initRequest(){
 			session_start();
@@ -14,6 +15,6 @@
 		}
 		
 		private static function createClassLoader(){
-			spl_autoload_register(function ($className) {require_once 'classes/' . \str_replace('\\', '/', $className) . '.php';});
+			spl_autoload_register(function ($className) {require_once self::WEBAPPROOT.'classes/' . \str_replace('\\', '/', $className) . '.php';});
 		}
 	}

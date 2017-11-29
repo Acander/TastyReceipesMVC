@@ -1,3 +1,7 @@
+<?php
+	
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -51,7 +55,7 @@
 			<h1 class = "headline3">Comments</h1>
 			
 			<?php
-				include("Comment.php");
+				include("../fragments/Comment.php");
 			
 				getComments("Meatballs");
 				if(isset($_SESSION['e'])){

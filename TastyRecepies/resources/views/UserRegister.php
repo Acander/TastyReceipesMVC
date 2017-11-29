@@ -14,7 +14,7 @@
 	
 	<div class = "center">
 		
-		<form action="userRegistration.php" method = "POST">
+		<form action="../../userRegistration.php" method = "POST">
 			<h1 class = "headline2">Sign Up</h2>
 			<div class="container">
 				<h1 class = "headline4">Email</h1>

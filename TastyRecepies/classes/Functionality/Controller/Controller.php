@@ -60,9 +60,10 @@
 		*	@param string An unescaped email address from the user input
 		*	@param string An unescaped password from the user input
 		*	@param string An unescaped re-submited password (supposed to be the same as the above) from the user input
+		*	@return integer An error code wich signals if the operation was successful or not
 		*/
 		public function userRegistration($unescapedEmail, $unescapedPwd, $unescapedpwdRe){
-			$this->userDAO->registrateUser($unescapedEmail, $unescapedPwd, $unescapedpwdRe);
+			return $this->userDAO->registrateUser($unescapedEmail, $unescapedPwd, $unescapedpwdRe);
 		}
 		
 		/**
@@ -71,7 +72,7 @@
 		*	@param string An unescaped password
 		*/
 		public function conValUser($unescapedEmail, $unescapedPwd){
-			$this->userDAO->validateUser($unescapedEmail, $unescapedPwd);
+			return $this->userDAO->validateUser($unescapedEmail, $unescapedPwd);
 		}
 		
 		/**

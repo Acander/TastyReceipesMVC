@@ -1,16 +1,20 @@
 <?php
 	namespace Functionality\Integration;
-	
-	use Functionality\Util\DbLogInConfig;
+	use Functionality\Integration\DbLogInConfig;
 	
 	/**
 	*	Handles all the SQL calls to the <code>Comment</code> database.
 	*/
 	class CommentDAO{
 		private $conn;
+		private $dataBaseManager;
 		
 		public function __construct(){
-			$this->conn = DbLogInConfig::establishDatabaseConnection();
+			$this->dataBaseManager = new DbLogInConfig();
+		}
+		
+		private function establishConnection(){
+			$this->conn = $this->dataBaseManager->establishDatabaseConnection();
 		}
 		
 		/**
@@ -19,6 +23,7 @@
 		*	@param string The page were a comment should be deleted
 		*/
 		public function delComment($c_id, $food){
+			self::establishConnection();
 			$sql = self::sqlCommentDelete($c_id, $food);
 			mysqli_query($this->conn, $sql);
 		}
@@ -35,6 +40,7 @@
 		*@param string The page were submitted
 		*/
 		public function addComment($uid, $message, $date, $food){
+			self::establishConnection();
 			$sql = self::sqlAddComment($uid, $message, $date, $food);
 			mysqli_query($this->conn, $sql);
 		}
@@ -49,6 +55,7 @@
 		*/
 		
 		public function getAllComments(){
+			self::establishConnection();
 			$sql = self::sqlSelectAllComments();
 			return mysqli_query($this->conn, $sql);
 		}

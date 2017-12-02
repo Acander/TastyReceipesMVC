@@ -16,8 +16,16 @@
 	$unescapedPwd = $_POST["pwd"];
 	
 	$contr = Controller::getController();
-	$contr->conValUser($unescapedEmail, $unescapedPwd);
+	$errorCode = $contr->conValUser($unescapedEmail, $unescapedPwd);
 	
+	if($errorCode == 1){
+		header("Location: ../TastyRecepies/index.php?login=error");
+		exit();
+	}
+	else if($errorCode == 0){
+		header("Location: ../TastyRecepies/resources/views/MainPage.php");
+		exit();
+	}
 	
 		
 ?>

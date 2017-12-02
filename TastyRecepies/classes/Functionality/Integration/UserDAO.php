@@ -2,13 +2,18 @@
 
 	namespace Functionality\Integration;
 	
-	use Functionality\Util\DbLogInConfig;
+	use Functionality\Integration\DbLogInConfig;
 	
 	class UserDAO {
 		private $conn;
+		private $databaseManager;
 		
 		public function __construct(){
-			$this->conn = DbLogInConfig::establishDatabaseConnection();
+			$this->dataBaseManager = new DbLogInConfig();
+		}
+		
+		private function establishConnection(){
+			$this->conn = $this->dataBaseManager->establishDatabaseConnection();
 		}
 		
 		/**
@@ -18,25 +23,28 @@
 		*	@param string An unescaped re-submited password (supposed to be the same as the above) from the user input
 		*/
 		public function registrateUser($unescapedEmail, $unescapedPwd, $unescapedpwdRe){
+			self::establishConnection();
 			$email = mysqli_real_escape_string($this->conn, $unescapedEmail);
 			$pwd = mysqli_real_escape_string($this->conn, $unescapedPwd);
 			$pwdRe = mysqli_real_escape_string($this->conn, $unescapedpwdRe);
 			
-			self::errorHandlers($email, $pwd, $pwdRe);
+			return self::errorHandlers($email, $pwd, $pwdRe);
 		}
 		
 		private function errorHandlers($email, $pwd, $pwdRe){
 			if(self::pwdCondition($pwd, $pwdRe)){
-				self::passwordNotTheSame();
+				return self::passwordNotTheSame();
 			}
 			else{
 				$resultCheck = self::sqlUserOccurenceCheck($email);
 				
+				$hashPwd = self::hashPassword($pwd);
+				
 				if(self::emailCondition($resultCheck)){
-					self::emailAlreadyExists();
+					return self::emailAlreadyExists();
 				}
 				else{
-					self::createUser($email, $pwd);
+					return self::createUser($email, $hashPwd);
 				}
 			}
 		}
@@ -45,9 +53,12 @@
 			return (!($pwd == $pwdRe));
 		}
 		
+		private function hashPassword($pwd){
+			return password_hash($pwd, PASSWORD_DEFAULT);
+		}
+		
 		private function passwordNotTheSame(){
-			header("Location: ../TastyRecepies/UserRegister.php?UserRegister=pwdFailure");
-			exit();
+			return 1;
 		}
 		
 		private function sqlUserOccurenceCheck($email){
@@ -65,15 +76,13 @@
 		}
 		
 		private function emailAlreadyExists(){
-			header("Location: ../TastyRecepies/UserRegister.php?UserRegister=emailFailure");
-			exit();
+			return 2;
 		}
 		
 		private function createUser($email, $pwd){
 			$sql = "INSERT INTO user (email, pwd) VALUES ('$email', '$pwd');";
 			mysqli_query($this->conn, $sql);
-			header("Location: ../TastyRecepies/index.php");
-			exit();
+			return 0;
 		}
 		
 		/**
@@ -82,45 +91,55 @@
 		*	@paramn string unescaped string representing the password
 		*/
 		public function validateUser($unescapedEmail, $unescapedPwd){
+			self::establishConnection();
 			$email = mysqli_real_escape_string($this->conn, $unescapedEmail);
 			$pwd = mysqli_real_escape_string($this->conn, $unescapedPwd);
 	
-			$result = self::query($email, $pwd);
+			$result = self::query($email);
 			$resultCheck = mysqli_num_rows($result);
-			self::validation($result, $resultCheck);
+			return self::validation($result, $resultCheck, $pwd);
 		}
 		
-		private function query($email, $pwd){
-			$sql = self::sqlSelectUser($email, $pwd);
+		private function query($email){
+			$sql = self::sqlSelectUser($email);
 			return mysqli_query($this->conn, $sql);
 		}
 		
-		private function sqlSelectUser($email, $pwd){
-			return "SELECT * FROM user WHERE email = '$email' AND pwd = '$pwd'";
+		private function sqlSelectUser($email){
+			return "SELECT * FROM user WHERE email = '$email'";
 		}
 		
-		private function validation($result, $resultCheck){
+		private function validation($result, $resultCheck, $pwd){
 			if($resultCheck < 1) {
-				self::wrongUserInformation();
+				return self::wrongUserInformation();
 			}
 			else{
-				self::correctUserInformation($result);
+				$row = mysqli_fetch_assoc($result);
+				$hashedPwdCheck = password_verify($pwd, $row['pwd']);
+					
+				if($hashedPwdCheck == false){
+					return self::wrongUserInformation();
+				}
+				else if($hashedPwdCheck == true){
+					return self::correctUserInformation($result);
+				}
 			}
 		}
 		
 		private function wrongUserInformation(){
-			header("Location: ../TastyRecepies/index.php?login=error");
-			echo "E-mail or password is incorrect";
-			exit();
+			return 1;
 		}
+		
+		//private function validatePwd($pwd){
+		//	}
 		
 		private function correctUserInformation($sqlResult) {
 			$row = mysqli_fetch_assoc($sqlResult);
 					
 			$_SESSION['e'] = $row["email"];
 			$_SESSION['p'] = $row["pwd"];
-			header("Location: ../TastyRecepies/resources/views/MainPage.php");
-			exit();
+			
+			return 0;
 		}
 		
 		/**
